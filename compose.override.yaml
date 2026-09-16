@@ -1,0 +1,33 @@
+# Default local mode: XAMPP beside Docker.
+# Windows XAMPP owns Apache :8080 and MySQL :3306.
+# WSL2 Docker owns nginx :80, Laravel, Redis, Mailpit, Horizon, scheduler, Vite.
+#
+# host.docker.internal reaches the Windows host from WSL2 Docker Engine.
+# Do not publish 8080 or 3306 from Compose in this file.
+
+services:
+  edge:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  cms:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      HOLODB_HOST: host.docker.internal
+      SYS_DB_HOST: host.docker.internal
+      LEGACY_URL: http://host.docker.internal:8080
+
+  horizon:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      HOLODB_HOST: host.docker.internal
+      SYS_DB_HOST: host.docker.internal
+
+  scheduler:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      HOLODB_HOST: host.docker.internal
+      SYS_DB_HOST: host.docker.internal

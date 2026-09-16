@@ -1,0 +1,12 @@
+# Phase 2 cutover map — fail closed to legacy.
+# nginx `map $uri $backend` include. Only platform routes go to Laravel (`cms`).
+# Hotel pages, habblets, housekeeping, client, and /web-gallery stay off this list.
+#
+# To cut over a route in a later phase: add one line, then `docker compose exec edge nginx -s reload`.
+# Rollback: delete the line, reload. Never rewrite PHPRetro in this file.
+
+~^/up$ cms;
+~^/up/ cms;
+~^/health(/.*)?$ cms;
+~^/horizon(/.*)?$ cms;
+~^/build/ cms;

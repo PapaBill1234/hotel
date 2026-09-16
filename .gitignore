@@ -1,0 +1,16 @@
+/legacy/
+**/.env
+**/.env.backup
+**/*.sqlite
+**/*.sqlite-*
+**/vendor/
+**/node_modules/
+**/public/web-gallery
+**/public/hot
+**/public/build
+**/storage/logs/*.log
+**/storage/framework/sessions/*
+**/storage/framework/views/*
+**/storage/framework/cache/data/*
+!**/storage/**/.gitignore
+.DS_Store
